@@ -1,132 +1,106 @@
-# HASTKALA
-### Tradition, Crafted for Tomorrow.
+# Hastkala — The Art of Handmade. The Soul of India.
 
-A full-stack artisan marketplace designed to connect customers with India's traditional craftspeople through handmade products, artisan profiles and stories that preserve cultural heritage.
-
-<!-- Replace with the path to your actual banner image -->
-<p align="center">
-  <img src="docs/assets/hastkala-banner.png" alt="Hastkala — Tradition, Crafted for Tomorrow" width="100%">
-</p>
-
-<p align="center">
-  <strong>Discover the craft. Meet the maker. Preserve the tradition.</strong>
-</p>
-
-<p align="center">
-  <a href="YOUR_LIVE_DEMO_URL">Live Demo</a> ·
-  <a href="#features">Features</a> ·
-  <a href="#getting-started">Getting Started</a>
-</p>
+An artisan e-commerce marketplace dedicated to traditional and contemporary Indian craftspeople. Built with React 19, TypeScript, Express, Tailwind CSS, and Supabase PostgreSQL architecture.
 
 ---
 
-## Overview
+## 📚 Complete Platform Documentation & Guides
 
-Hastkala is a digital marketplace built around the people and traditions behind handmade Indian crafts. It brings product discovery, artisan storytelling and online shopping together in one experience.
+The repository includes a comprehensive 15-chapter handbook and documentation suite:
 
-The platform aims to make traditional crafts easier to discover while helping artisans present their work and craftsmanship to a wider audience.
+1. **[User Guide (`USER_GUIDE.md`)](docs/USER_GUIDE.md)**: Customer shopping guide, artisan onboarding, studio walkthrough, AI cataloguing instructions, and FAQs.
+2. **[Platform Overview (`PLATFORM_OVERVIEW.md`)](docs/PLATFORM_OVERVIEW.md)**: Executive summary, navigation map, core modules, impact indicators, and B2B bulk enquiry workflows.
+3. **[Technical Documentation (`TECHNICAL_DOCUMENTATION.md`)](docs/TECHNICAL_DOCUMENTATION.md)**: Tech stack, Express API endpoints, database schema, entity relationships, sequence diagrams, and security controls.
+4. **[Hackathon Demo Guide (`HACKATHON_DEMO_GUIDE.md`)](docs/HACKATHON_DEMO_GUIDE.md)**: Elevator pitch, problem statement, key innovations, and a 3-minute live demonstration script for evaluators.
+5. **[Known Limitations & Roadmap (`KNOWN_LIMITATIONS.md`)](docs/KNOWN_LIMITATIONS.md)**: Simulated components, external dependencies, browser compatibility, and prioritized strategic roadmap.
 
-## Features
+---
 
-- **Product Discovery** — Browse handmade products and explore craft categories.
-- **Artisan Profiles** — Discover the makers, their backgrounds and their work.
-- **Craft Stories** — Learn about traditional techniques, materials and regional heritage.
-- **Shopping Experience** — Explore products, manage a wishlist and add items to a cart.
-- **Order Management** — Support the shopping and order workflow implemented in the application.
-- **Responsive Interface** — Browse the marketplace across desktop and mobile devices.
+## 1. Vision & Provenance Mission
 
-*Document only the features that are implemented and working in the current version.*
+**Hastkala** bridges independent artisans directly with conscious patrons. Rather than impersonal industrial warehouses, every piece is made in verified workshops and guilds.
+- **Evidence-Based Provenance:** Guild certifications, workshop photographs, and material receipts are verified before authenticity badges are issued.
+- **Fair Economics:** Transparent studio pricing calculator ensures skilled labor, studio overhead, and materials are fairly rewarded.
+- **Natural Materials:** Botanical dyes, handspun deshi cotton, riverbed terracotta, reclaimed teak, and lost-wax brass.
+- **Signature Palette:**
+  - Deep burgundy: `#7E1726` (Primary brand mark & accents)
+  - Warm ivory: `#F8F3EB` (Canvas & surface)
+  - Terracotta: `#8A4935` (Earth & craft actions)
+  - Forest green: `#34483A` (Guild & provenance seals)
 
-## Screenshots
+---
 
-<!-- Add actual screenshots from your application -->
-| Homepage | Product Catalogue |
-|---|---|
-| ![Homepage](docs/assets/homepage.png) | ![Product catalogue](docs/assets/products.png) |
+## 2. Tech Stack & Architecture
 
-| Craft Stories | Artisan Profiles |
-|---|---|
-| ![Craft stories](docs/assets/craft-stories.png) | ![Artisan profiles](docs/assets/artisans.png) |
+- **Frontend:** React 19, TypeScript, Tailwind CSS, Lucide React, Motion.
+- **Backend & AI Server:** Express (`server.ts`) with Gemini 2.5 Flash for:
+  - Turning artisan rough notes into evocative product descriptions.
+  - Faithful translations between Kannada (ಕನ್ನಡ) and English.
+  - Auto-suggesting e-commerce search tags and disciplines.
+  - Mathematical & AI-advisory selling price calculation.
+- **Database & Persistence:**
+  - Full PostgreSQL / Supabase migration schema in `supabase/migrations/20261021000000_create_craft_here_schema.sql` with Row Level Security (RLS) policies, foreign keys, indexes, and constraints.
+  - Zero-config client store (`src/lib/db.ts`) with atomic transactions, stock checks, and idempotency guarantees that works out-of-the-box in development and connects to Supabase when environment variables are supplied.
 
-## Technology Stack
+---
 
-List the technologies actually used in the current implementation.
+## 3. Routes & Roles
 
-- **Frontend:** [Add framework and UI technologies]
-- **Backend and services:** [Add backend framework or platform]
-- **Database:** [Add database]
-- **Authentication:** [Add authentication provider]
-- **Deployment:** [Add hosting platform]
+### Public Patron Routes
+- `/`: Editorial Homepage with cinematic hero, craft discovery strip, craft disciplines, curator's choice, artisan spotlight, regional clusters, and provenance narrative.
+- `/shop`: Filterable catalogue by discipline, price, region, artisan, stock, and sort.
+- `/categories/:slug`: Curated discipline page.
+- `/products/:slug`: Multi-image gallery, materials, care instructions, origin story, quantity selector, and live stock checking.
+- `/artisans`: Directory of master artisans and guilds.
+- `/artisans/:slug`: Maker biography, workshop address, and active listings.
+- `/our-story`: Provenance philosophy and ethics.
+- `/search`: Instant keyword search with suggested craft queries.
+- `/cart`: Line items, quantity steppers with inventory bounds, free shipping incentive bar ($150 threshold), and subtotal breakdown.
+- `/checkout`: Address validation, mock payment provider abstraction, idempotency keys, and atomic inventory reduction.
+- `/checkout/success`: Order receipt with immutable line item snapshots.
+- `/orders` & `/orders/:id`: Customer order history and fulfillment tracking.
+- `/auth`: Sign in, register, and 1-click persona switching (Customer, Artisan, Admin).
 
-## Getting Started
+### Artisan Studio Routes
+- `/studio`: Dashboard overview with GMV, listings count, pending orders, and inventory alerts.
+- `/studio/products`: Listing management with draft, pending, published, and rejected states.
+- `/studio/products/new`: Listing creation with built-in Gemini AI Assistant for descriptions, translations, tags, and pricing calculator.
+- `/studio/orders`: Order line item fulfillment state transitions (`processing` → `in_production` → `shipped` → `delivered`).
+- `/studio/profile`: Workshop location, bio, lineage story, and imagery editor.
 
-### Prerequisites
+### Administrator & Curator Routes
+- `/admin`: Platform GMV oversight, total orders, active artisans, and documentary provenance review queue.
+- `/admin/products`: Review and approve artisan listings.
+- `/admin/artisans`: Grant or revoke "Guild Verified" and "Studio Inspected" credentials.
+- `/admin/orders`: Platform-wide transaction oversight.
 
-Install the runtime, package manager and other tools required by your project.
+---
+
+## 4. Setup & Running Locally
 
 ### Installation
-
 ```bash
-git clone YOUR_REPOSITORY_URL
-cd hastkala
 npm install
 ```
 
-Configure the required environment variables using the project's example environment file.
-
-Start the development server using the command defined in your `package.json`, for example:
-
+### Development
 ```bash
 npm run dev
 ```
+Runs the Express backend and mounts the Vite frontend on `http://localhost:3000`.
 
-Open the local URL printed in your terminal.
-
-> The commands above are a starter template. Confirm the repository URL, package manager, scripts and required services against the actual project before publishing.
-
-## Environment Configuration
-
-Document the required variable names in `.env.example`, without including real credentials.
-
-Never commit API keys, database passwords, access tokens or private service-role keys.
-
-## Project Structure
-
-Document the actual source layout here. For example:
-
-```text
-hastkala/
-├── public/
-├── src/
-├── docs/
-│   └── assets/
-├── .env.example
-├── .gitignore
-└── README.md
+### Unit Tests
+Pure calculations and stock bounds tests:
+```bash
+npx tsx --test src/utils/pricing.test.ts src/utils/order-calculations.test.ts
 ```
 
-Adapt this tree to match the real repository.
-
-## Roadmap
-
-- [ ] Improve product discovery and filtering
-- [ ] Expand craft stories and regional discovery
-- [ ] Improve multilingual product descriptions
-- [ ] Enhance artisan analytics and marketplace insights
-
-Update these items to reflect the project's real plans and progress.
-
-## Contributing
-
-Contributions, suggestions and bug reports are welcome. Open an issue to discuss a proposed change before submitting a pull request.
-
-## License
-
-Specify the license used by this repository. Do not claim an open-source license until the appropriate license file has been added.
-
----
-
-<p align="center">
-  <strong>Hastkala</strong><br>
-  Celebrating the hands and heritage behind every craft.
-</p>
+### Supabase Setup (Optional for Production)
+1. Execute the SQL migration in `supabase/migrations/20261021000000_create_craft_here_schema.sql` in your Supabase SQL Editor.
+2. Configure `.env`:
+```env
+VITE_SUPABASE_URL="https://your-project.supabase.co"
+VITE_SUPABASE_ANON_KEY="your-anon-key"
+GEMINI_API_KEY="your-gemini-key"
+```
+Hastkala runs out-of-the-box with pre-seeded demonstration data even without external credentials.

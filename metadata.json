@@ -1,0 +1,6 @@
+{
+  "name": "Craft-Here",
+  "description": "Handmade with meaning. Discover authentic handmade pieces shaped by skilled artisans, living traditions, and thoughtful design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,834 @@
+# HASTKALA — MASTER ENHANCEMENT PROMPT
+## AI-Powered Artisan Empowerment, Market Linkage, Craft Preservation & Business Intelligence
+
+### 1. YOUR ROLE
+
+Act as a senior full-stack engineer, AI engineer, database architect, UI/UX designer, cybersecurity specialist, and product strategist.
+
+Upgrade my existing Hastkala application into a reliable, AI-powered Indian artisan marketplace that helps artisans create professional product listings, price their work transparently, preserve traditional craft knowledge, reach individual and business buyers, and understand their business performance.
+
+**Existing project deployment:**
+https://ais-dev-f7yq5r5efixbnqcw3kzem2-98099549395.asia-southeast1.run.app/
+
+**Visual reference:**
+https://www.kaaristore.com/
+
+Use the reference only for general design inspiration. Preserve Hastkala's own logo, brand identity, content, and existing design language.
+
+This project is being developed for a hackathon. Prioritize meaningful innovation, functional integration, demonstrable results, security, and a polished user experience.
+
+---
+
+# 2. CRITICAL RULES — READ BEFORE IMPLEMENTATION
+
+Before changing any code, inspect the existing repository and identify:
+
+- Frontend framework, language, routing, and UI components.
+- Backend architecture and API endpoints.
+- Actual database provider, schema, migrations, and access policies.
+- Authentication and user roles.
+- Existing customer, artisan, product, category, and order records.
+- Image storage and upload workflow.
+- Current AI integrations and configured providers.
+- Shopping cart, wishlist, checkout, and payment implementation.
+- Existing deployment and environment configuration.
+
+Do not assume that technologies or features mentioned in earlier discussions are present. Verify the current codebase.
+
+### Preservation requirements
+
+1. Do not rebuild Hastkala from scratch.
+2. Do not replace the existing database, authentication, or backend architecture.
+3. Preserve all existing working features, product IDs, artisan IDs, and relationships.
+4. Do not create duplicate products, duplicate accounts, or a second shopping cart.
+5. Do not invent data, artisan identities, reviews, prices, market statistics, or impact figures.
+6. Do not add nonfunctional buttons or fake AI results.
+7. Never expose API keys, service-role credentials, or private configuration in client-side code.
+8. Use the existing architecture and dependencies wherever possible.
+9. Do not delete production records or run destructive database operations without explicit authorization.
+10. Verify every feature before describing it as complete.
+
+First, create a concise implementation plan based on the actual project. Then proceed to implementation rather than stopping at the plan.
+
+---
+
+# 3. THE OVERALL VISION
+
+Hastkala must provide two connected experiences.
+
+### Customer experience
+
+Customers discover authentic handmade products, learn about their makers, explore craft traditions, save products, purchase items, and contact artisans or request bulk quotations where supported.
+
+### Artisan experience
+
+Artisans receive an accessible workspace where they can create listings with AI assistance, calculate costs, publish products, preserve craft knowledge, manage buyer enquiries, and monitor business performance.
+
+Both experiences must use the same real product records, artisan relationships, permissions, and existing marketplace workflows.
+
+---
+
+# 4. FEATURE ONE — AI ARTISAN COPILOT
+
+**Priority: Highest**
+
+Create an AI assistant inside the existing artisan dashboard. It should guide an artisan through the complete process of creating a product listing.
+
+The assistant must be integrated with the actual product creation and publishing workflow, not operate as an isolated chatbot.
+
+## 4.1 Assistant interface
+
+Provide a guided workflow with the following steps:
+
+1. Select or photograph a product.
+2. Describe the product using voice or text.
+3. Review the recognized description.
+4. Enhance the product image if supported.
+5. Generate the product listing.
+6. Review and edit the generated information.
+7. Obtain a transparent pricing recommendation.
+8. Save a draft or publish the approved listing.
+
+Include progress indicators, back and next controls, validation messages, save confirmations, and retry actions.
+
+Keep the interface simple enough for first-time digital marketplace users.
+
+## 4.2 Voice-first multilingual input
+
+Support English and Hindi first, then add Kannada, Telugu, and other Indian languages supported by the configured speech and translation providers.
+
+Implement:
+
+- Voice recording or browser-supported speech input.
+- Language selection.
+- Transcription.
+- Editable transcripts.
+- Translation when required.
+- Clear microphone permission and processing states.
+- Manual text input as a fallback.
+
+Do not claim a language is supported unless the configured provider genuinely supports it.
+
+## 4.3 AI listing generation
+
+Generate structured product information such as:
+
+- Product name.
+- Short and detailed descriptions.
+- Craft tradition.
+- Materials.
+- Color and design.
+- Dimensions and weight, when supplied.
+- Product category.
+- Care instructions, when known.
+- Search keywords.
+- SEO title and meta description.
+- English and Hindi descriptions, where supported.
+
+The artisan must be able to review, edit, and approve the output before publication.
+
+Never invent missing dimensions, materials, provenance, certifications, or historical facts.
+
+## 4.4 AI assistant behavior
+
+The assistant should explain the next step in plain language, answer questions about using the platform, and help resolve common listing problems.
+
+It must distinguish platform instructions from general AI-generated advice.
+
+It must not claim to have saved, published, or updated anything until the backend confirms the action.
+
+## 4.5 Persistence and integration
+
+- Use the existing product schema and creation APIs.
+- Associate each product with the authenticated artisan.
+- Preserve existing validation and approval rules.
+- Prevent duplicate product creation when a request is retried.
+- Save drafts where the existing architecture permits.
+- Publish only through the existing authorized workflow.
+- Ensure newly published products appear in the actual customer marketplace.
+
+If an AI provider is unavailable, preserve the artisan's input and allow manual listing creation.
+
+---
+
+# 5. FEATURE TWO — CRAFT KNOWLEDGE PRESERVATION
+
+Create a structured digital archive that helps preserve Indian craft traditions and the knowledge of the people who practice them.
+
+Integrate it with the existing Craft Stories page, artisan profiles, and product collections.
+
+## 5.1 Craft archive
+
+Where verified content is available, record:
+
+- Craft name.
+- Region of origin or practice.
+- Traditional techniques.
+- Materials and tools.
+- Production process.
+- Relevant artisan profiles.
+- Photographs and videos of the making process.
+- Related products.
+- Artisan-contributed interviews and stories.
+- Language of the original contribution.
+- Translation, if available.
+- Source and verification status.
+
+Start with craft traditions already represented in Hastkala, such as Tholu Bommalata, Pen Kalamkari, Udayagiri woodcraft, Kasuti embroidery, and other verified existing categories.
+
+Do not assume every craft exists in the database; inspect the records first.
+
+## 5.2 Artisan contribution workflow
+
+Allow authorized artisans to submit or update their own craft stories.
+
+Include:
+
+- Text entry.
+- Media uploads where supported.
+- Original language selection.
+- Attribution and consent confirmation.
+- Draft saving.
+- Preview.
+- Submission for moderation, if moderation exists.
+
+Preserve the original text alongside any translation.
+
+Do not publish private recordings, personal stories, or identifiable media without appropriate permission.
+
+## 5.3 Craft storytelling
+
+Connect each eligible craft story to its relevant artisans, products, and collections.
+
+Use actual relationships from the database.
+
+Provide a clean reading experience with photographs, readable text, and clear links to related products.
+
+Do not fabricate historical details, cultural claims, or artisan biographies. Mark unverified submissions as unverified until they are reviewed.
+
+---
+
+# 6. FEATURE THREE — B2B BUYER AND BULK-ORDER PORTAL
+
+Create a business-buyer experience for retailers, hotels, interior designers, corporate gifting teams, and other organizations that may purchase handmade products in bulk.
+
+Integrate it with the existing product and artisan records.
+
+## 6.1 Buyer features
+
+Provide:
+
+- A dedicated business-buyer entry point.
+- Browsing and filtering of relevant products.
+- Product quantity selection.
+- Bulk-enquiry submission.
+- Quotation requests.
+- Buyer contact details and organization name.
+- Required quantity and optional budget.
+- Delivery region and target delivery date, where relevant.
+- Additional requirements or messages.
+- Enquiry status and confirmation.
+
+Validate inputs on the server and protect buyer contact details.
+
+## 6.2 Artisan and administrator workflows
+
+Where the existing permissions support them, allow authorized users to:
+
+- View relevant enquiries.
+- Identify the associated product and artisan.
+- Review requested quantities and requirements.
+- Record responses.
+- Update enquiry status.
+- Track enquiry history.
+- Convert an enquiry into an order through an existing supported order workflow.
+
+Do not allow arbitrary users to access private enquiries belonging to other artisans.
+
+## 6.3 Catalogue generation
+
+Implement a downloadable product catalogue using real published products.
+
+Provide CSV export first if it fits the existing architecture. Add PDF export if practical.
+
+Include appropriate product information, prices, public artisan attribution, and product URLs.
+
+Do not include sensitive internal data or private contact information.
+
+## 6.4 External integrations
+
+Keep the architecture extensible for external marketplace integrations.
+
+Do not claim that Hastkala is integrated with ONDC, GeM, or any other external marketplace unless the actual integration is implemented and verified with valid credentials and APIs.
+
+---
+
+# 7. FEATURE FOUR — TRANSPARENT FAIR-PRICING ASSISTANT
+
+Help artisans understand their production costs and make informed pricing decisions.
+
+The pricing system must use explicit calculations and real source data where available, not unexplained AI guesses.
+
+## 7.1 Cost inputs
+
+Collect relevant information, including:
+
+- Raw materials.
+- Labour hours.
+- Labour compensation rate.
+- Packaging.
+- Production overhead.
+- Shipping or fulfilment costs, where relevant.
+- Product quantity.
+- Other relevant costs.
+
+Make optional fields clearly optional and explain them in simple language.
+
+## 7.2 Calculation engine
+
+Calculate the known production cost from the provided inputs.
+
+Clearly distinguish:
+
+- Material costs.
+- Labour compensation.
+- Packaging and overhead.
+- Other included expenses.
+- Desired selling price.
+- Platform fees, where known.
+- Shipping costs.
+- Expected contribution or gross margin, with assumptions.
+
+Use decimal-safe arithmetic for monetary calculations.
+
+Do not double-count expenses or present revenue as profit.
+
+## 7.3 Recommended price
+
+When sufficient information exists, show:
+
+- Estimated production cost.
+- Suggested selling-price range.
+- Optional recommended price.
+- Explanation of the calculation.
+- Relevant assumptions.
+- Confidence based on input completeness and data quality.
+
+The artisan must choose the final selling price.
+
+Never automatically change a live product price without explicit user action.
+
+## 7.4 Market comparison
+
+Where permitted and technically feasible, compare relevant products using actual available data.
+
+Store or display the source, retrieval time, and comparable product characteristics when available.
+
+Do not fabricate competitor prices or claim to have accessed live market data when no source was retrieved.
+
+If market data is unavailable, label the result as a cost-based estimate, not a market-validated recommendation.
+
+## 7.5 Product integration
+
+Allow the artisan to apply the chosen price to the existing product form.
+
+Preserve the existing currency conventions, server-side price validation, product ownership rules, and order-price safeguards.
+
+---
+
+# 8. FEATURE FIVE — ARTISAN BUSINESS INTELLIGENCE
+
+Enhance the existing artisan dashboard with analytics backed by real application events and records.
+
+## 8.1 Dashboard metrics
+
+Display metrics only when the necessary data exists:
+
+- Total products.
+- Published listings.
+- Draft listings.
+- Product views.
+- Wishlist additions, where recorded.
+- Buyer enquiries.
+- Conversion rate, when reliably calculable.
+- Inventory and low-stock items, when tracked.
+- Orders by status.
+- Completed orders.
+- Sales totals.
+- Artisan payouts, if actually recorded.
+
+Define each metric clearly.
+
+For example, distinguish total orders from completed orders, enquiries from sales, and gross sales from artisan income.
+
+Do not hardcode statistics or invent impressive-looking results.
+
+## 8.2 Actionable insights
+
+Where reliable data supports a conclusion, provide simple recommendations such as:
+
+- Complete missing product descriptions.
+- Improve a low-quality product image.
+- Review low-stock products.
+- Respond to unanswered enquiries.
+- Review product performance over a specified period.
+
+Label these as recommendations, not guaranteed outcomes.
+
+Do not claim a product is underperforming without an adequate data basis.
+
+## 8.3 Time-based analytics
+
+Use reliable timestamps and appropriate date ranges.
+
+Show when data was last updated.
+
+Use efficient queries and appropriate indexes rather than loading every record into the browser.
+
+Respect artisan ownership and authorization.
+
+---
+
+# 9. FEATURE SIX — PRODUCT PROVENANCE AND AUTHENTICITY
+
+Create a digital product identity that connects a handmade item to its maker and craft tradition.
+
+## 9.1 Product identity
+
+For eligible products, present:
+
+- Product name and identifier.
+- Artisan profile.
+- Craft tradition.
+- Materials, when recorded.
+- Production details, when supplied.
+- Region, where verified.
+- Related craft story.
+- Product photographs.
+- Listing or provenance information that has actually been verified.
+
+Distinguish artisan-provided information from independently verified information.
+
+Never label a product certified, authenticated, or verified without a real verification process.
+
+## 9.2 QR codes
+
+Where practical, generate a QR code pointing to the product's public detail page or verified provenance page.
+
+Requirements:
+
+- Use a stable public URL.
+- Ensure the destination does not expose private information.
+- Ensure the QR code works on mobile.
+- Provide a printable or downloadable version where useful.
+- Regenerate or redirect links safely if the routing architecture changes.
+
+Do not treat a QR code itself as proof of authenticity. It is a convenient way to access the recorded product information.
+
+---
+
+# 10. FEATURE SEVEN — LOW-BANDWIDTH AND ASSISTED MODE
+
+Make Hastkala easier to use for artisans with basic smartphones, limited digital experience, or unreliable internet.
+
+## 10.1 Performance improvements
+
+Implement where appropriate:
+
+- Responsive layouts.
+- Optimized and compressed images.
+- Lazy loading for below-the-fold content.
+- Reasonable upload limits.
+- Clear progress indicators.
+- Efficient database requests.
+- Graceful handling of slow networks.
+- Retry controls for recoverable failures.
+
+Do not compromise product accuracy or security for performance.
+
+## 10.2 Assisted experience
+
+Provide:
+
+- Large, clearly labelled controls.
+- Simple step-by-step instructions.
+- Plain-language errors.
+- Voice guidance where supported.
+- Visible save confirmation.
+- Recovery from failed uploads.
+- Draft preservation where practical.
+- Keyboard and screen-reader accessibility.
+
+## 10.3 Offline support
+
+Inspect the existing PWA and service-worker architecture before adding offline functionality.
+
+If feasible, implement safe offline draft saving and synchronization.
+
+Requirements:
+
+- Never lose unsaved user input unnecessarily.
+- Indicate clearly when the device is offline.
+- Resolve synchronization conflicts safely.
+- Do not pretend an offline listing has been published.
+- Do not queue sensitive or destructive operations without appropriate safeguards.
+
+If robust offline synchronization is beyond the current scope, improve low-bandwidth behavior first and document offline support as a future enhancement.
+
+---
+
+# 11. FEATURE EIGHT — REAL IMPACT DASHBOARD
+
+Create or improve an administrator-facing impact dashboard and a public-facing Our Impact page using trustworthy data.
+
+## 11.1 Internal dashboard
+
+Where supported by the database, track:
+
+- Active artisan accounts.
+- Artisans with published products.
+- Published product listings.
+- Represented craft traditions.
+- AI-assisted listing creation.
+- Listing completion and publication.
+- Buyer enquiries.
+- Completed orders.
+- Sales totals or artisan payouts, when reliably recorded.
+
+Define metrics, avoid double-counting, and use appropriate date ranges.
+
+## 11.2 Listing workflow measurement
+
+Measure listing creation duration only when reliable start and completion timestamps are recorded.
+
+Distinguish:
+- AI-assisted listings.
+- Manually created listings.
+- Drafts.
+- Published listings.
+- Failed attempts.
+
+Do not claim AI saves time unless a valid comparison or measurement supports that conclusion.
+
+## 11.3 Public impact page
+
+Use real, approved metrics and verified artisan stories.
+
+If reliable metrics are unavailable, use craft stories and explain the intended impact without inventing numbers.
+
+Keep private business data, buyer information, and individual sales details out of the public dashboard unless explicitly authorized.
+
+---
+
+# 12. CUSTOMER MARKETPLACE INTEGRATION
+
+All enhancements must integrate with the existing Hastkala marketplace.
+
+Preserve:
+
+- Homepage and hero.
+- Shop and craft collections.
+- Product details.
+- Artisan directory and profiles.
+- Craft Stories.
+- Our Impact.
+- Customer authentication.
+- Search and filters.
+- Wishlist.
+- Cart.
+- Checkout.
+- Orders.
+- Existing payment behavior.
+
+## Integration rules
+
+- Use the existing product records and artisan relationships.
+- Preserve stable IDs and routes.
+- Publish products through the existing workflow.
+- Keep drafts and unpublished products out of public listings.
+- Validate prices, inventory, ownership, and orders on the server.
+- Ensure new AI-created products use the same data model as manually created products.
+- Prevent duplicate product creation during retries.
+- Do not bypass existing payment or stock validation.
+
+The customer must be able to discover a product created by an artisan through the AI Product Studio without requiring a separate database or manual duplication.
+
+---
+
+# 13. SECURITY AND PRIVACY
+
+Apply appropriate security to every new feature.
+
+### Authentication and authorization
+
+- Reuse the existing authentication system.
+- Enforce the actual customer, artisan, and administrator roles.
+- Verify product and profile ownership on the server.
+- Protect private buyer enquiries and business analytics.
+- Use least-privilege access.
+- Preserve and validate database access policies.
+
+### AI and uploads
+
+- Call privileged AI providers from secure server-side code.
+- Keep API keys in environment variables or the deployment's secret manager.
+- Validate file types, file sizes, and upload permissions.
+- Validate AI outputs against structured schemas.
+- Treat user uploads and generated text as untrusted input.
+- Handle provider failures, timeouts, and rate limits.
+- Avoid storing voice recordings unnecessarily.
+- Obtain appropriate consent for recording and processing audio.
+- Explain external processing where relevant.
+
+### Data integrity
+
+- Preserve referential integrity.
+- Use safe migrations and appropriate constraints.
+- Prevent duplicate submissions.
+- Use transactional operations when consistency requires them.
+- Do not overwrite production data with sample data.
+- Keep test data clearly separated from real data.
+
+### Payment safety
+
+Preserve the existing checkout architecture.
+
+Distinguish simulated payment from real payment processing. Never mark an order as paid solely because the browser reports success.
+
+---
+
+# 14. UI/UX AND DESIGN REQUIREMENTS
+
+Retain Hastkala's premium Indian artisan marketplace identity.
+
+Use:
+
+- Warm ivory and off-white surfaces.
+- Deep burgundy accents.
+- Restrained antique-gold details.
+- Editorial serif headings.
+- Readable body typography.
+- Generous whitespace.
+- Consistent cards, buttons, borders, and spacing.
+- Authentic craft imagery.
+- Subtle and purposeful animations.
+
+Do not copy another brand's proprietary design or assets.
+
+Every new feature must work on desktop, tablet, and mobile.
+
+Include proper:
+- Loading states.
+- Success states.
+- Empty states.
+- Validation errors.
+- Network errors.
+- Retry actions.
+- Keyboard focus.
+- Accessible labels.
+- Reduced-motion support.
+
+Do not create decorative controls that imply functionality without performing an action.
+
+---
+
+# 15. TECHNICAL IMPLEMENTATION
+
+Use the actual project architecture.
+
+If the current project uses Next.js, TypeScript, Tailwind CSS, and Supabase, integrate into that stack. If inspection shows a different stack, follow the existing implementation.
+
+Organize provider-specific logic into maintainable server-side modules.
+
+Potential service modules include:
+
+- Speech transcription.
+- Translation and text generation.
+- Image enhancement.
+- Pricing calculations.
+- Market-data retrieval.
+- Product validation.
+- Analytics aggregation.
+- Catalogue generation.
+
+Use the providers and models actually configured and available.
+
+Do not invent API endpoints, assume credentials exist, or expose secrets.
+
+For every new endpoint or server action, define:
+- Input validation.
+- Authentication and authorization.
+- Output format.
+- Error handling.
+- Persistence behavior.
+- Rate limits where appropriate.
+- Relevant tests.
+
+Update environment example files using safe placeholders only.
+
+Keep the existing marketplace usable when optional AI services are unavailable.
+
+---
+
+# 16. IMPLEMENTATION PRIORITIES
+
+Implement in the following order. Complete and test each stage before moving to the next.
+
+## Stage 1 — Audit and integration foundation
+
+- Inspect the codebase and database.
+- Identify existing features and gaps.
+- Preserve current functionality.
+- Establish safe API and data contracts.
+
+## Stage 2 — AI Product Studio
+
+Implement the connected workflow for:
+- Image upload and enhancement.
+- Voice or text input.
+- Multilingual description generation.
+- Product review and editing.
+- Transparent pricing.
+- Draft saving and publishing.
+
+This is the highest-priority differentiator.
+
+## Stage 3 — Market linkage
+
+Implement:
+- Bulk enquiries.
+- Enquiry management.
+- Product catalogue export.
+- Integration with existing artisan and product records.
+
+## Stage 4 — Craft preservation and provenance
+
+Implement:
+- Craft archive improvements.
+- Artisan-contributed stories.
+- Product-to-story relationships.
+- Product provenance pages and QR codes.
+
+## Stage 5 — Business intelligence and impact
+
+Implement:
+- Real artisan dashboard metrics.
+- Listing workflow measurements.
+- Relevant business recommendations.
+- Verified public impact information.
+
+## Stage 6 — Low-bandwidth improvements
+
+Implement:
+- Image optimization.
+- Improved recovery from failures.
+- Draft preservation.
+- Accessible assisted workflows.
+- Offline support only if safely achievable.
+
+## Stage 7 — Final quality assurance
+
+Complete regression testing, security checks, responsive testing, and deployment verification.
+
+If time or service availability is limited, prioritize fewer fully functional features over a large number of incomplete features.
+
+---
+
+# 17. TESTING AND ACCEPTANCE CRITERIA
+
+Do not declare the work complete until the implemented functionality has been tested.
+
+### AI Product Studio
+
+- An authorized artisan can begin creating a product.
+- Supported voice input can be recorded or transcribed.
+- Transcribed text can be corrected.
+- Generated descriptions can be edited.
+- Image enhancement works when its provider is configured.
+- Pricing calculations use the actual supplied costs.
+- The artisan can save a draft or publish through the existing workflow.
+- The product is saved once and appears correctly in the marketplace.
+- Failures preserve the user's work.
+
+### Bulk buyer portal
+
+- Buyers can submit valid enquiries.
+- Enquiries are saved to the real database.
+- Only authorized parties can access private enquiries.
+- Status updates persist.
+- Catalogue exports contain only eligible public products.
+
+### Craft archive and provenance
+
+- Stories retain correct artisan and craft associations.
+- Submitted content follows the actual moderation and publication rules.
+- Product links and QR destinations work.
+- Unverified information is not presented as verified.
+
+### Analytics and impact
+
+- Metrics use actual database records.
+- Calculations use clearly defined rules.
+- Missing data is handled honestly.
+- Private information is not exposed publicly.
+- No fake metrics are displayed as real results.
+
+### Regression testing
+
+Verify that:
+- Login and authentication work.
+- Product discovery and product details work.
+- Artisan profiles remain correct.
+- Wishlist works.
+- Cart totals are correct.
+- Checkout retains its existing safeguards.
+- Orders persist correctly.
+- Mobile and desktop layouts work.
+- Other existing routes are not broken.
+
+Run the available lint, type-check, unit tests, integration tests, and production build.
+
+Fix errors introduced by the implementation. Do not disable checks just to make the build pass.
+
+---
+
+# 18. FINAL REPORT
+
+After implementation, provide a concise, factual report containing:
+
+1. Existing features discovered.
+2. Features implemented.
+3. Files and components changed.
+4. Database migrations or schema changes.
+5. AI providers and models actually configured.
+6. Environment variables required, without revealing their values.
+7. Tests and build commands executed.
+8. Results of each test.
+9. Features that still require credentials or external services.
+10. Known limitations.
+11. Deployment status, if deployment was actually performed.
+12. Recommended next steps.
+
+Clearly separate:
+- Implemented and verified.
+- Implemented but not fully verified.
+- Partially implemented.
+- Planned or unavailable.
+
+Do not report success for an untested feature.
+
+---
+
+# FINAL INSTRUCTION
+
+Start by inspecting the current Hastkala repository, database, and deployment configuration.
+
+Then implement these upgrades directly in the existing project, following the priority order.
+
+Connect the new features to real data, actual user permissions, and existing customer shopping flows.
+
+Do not stop after creating the UI, writing a plan, or generating placeholder data.
+
+The objective is to deliver a cohesive, secure, accessible, and demonstrably useful AI-powered artisan marketplace—not a collection of disconnected mockups.
+
+Prioritize reliability, authentic artisan representation, transparent pricing, real market access, cultural preservation, and measurable outcomes.
