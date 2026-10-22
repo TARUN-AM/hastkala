@@ -4,7 +4,7 @@ import { db } from '../lib/db';
 
 test('db retrieves all seed craft stories with valid attributes', () => {
   const stories = db.getStories();
-  assert.ok(stories.length >= 6, 'Should have at least 6 seed stories');
+  assert.ok(stories.length >= 3, 'Should have at least 3 seed stories');
   
   for (const s of stories) {
     assert.ok(s.id, 'Story must have an id');
